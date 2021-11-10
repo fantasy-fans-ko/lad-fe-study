@@ -1,6 +1,8 @@
-import { Table } from "antd";
+import { Table, Layout, Space, Row, Col} from "antd";
 import "./App.less";
 import React, { useState, useEffect } from "react";
+
+const { Header, Footer, Sider, Content } = Layout;
 
 const columns = [
   {
@@ -59,10 +61,33 @@ function App() {
   useEffect(() => {
     fetchPlayer();
   }, []);
-
+  
   return (
-    <div className="App">
-      <Table columns={columns} dataSource={data} onChange={onChange} />
+    <div className="App">     
+    <Layout style={{background: 'white'}}>
+      <Space>
+      <Sider width="200" style={{background: 'white'}}>
+      Sider
+        <Layout>          
+          <Row style={{background: 'red'}}>카운터자리(Row>Circle)</Row>
+          <Row style={{background: 'blue', color: 'white'}}>구단명자리(Row>Table)<br></br><br></br><br></br><br></br><br></br></Row>
+        </Layout>
+      </Sider>
+      <Layout>
+        <Space direction="vertical">
+        <Header style={{background: 'green'}}>현재선택선수정보자리(Header)</Header>
+        <Content style={{width: '1200px', background: 'black', color: 'white'}}>
+          <p>선수명단자리(Content>Table)</p>
+          <Table columns={columns} dataSource={data} onChange={onChange} />
+        </Content>        
+        </Space>
+      </Layout>
+      <Sider width="100" style={{background: 'white'}}>
+      Sider
+      <Row style={{background: 'red'}}>선택된선수자리(Table)<br></br><br></br><br></br><br></br><br></br></Row>
+      </Sider>
+      </Space>
+    </Layout>  
     </div>
   );
 }
