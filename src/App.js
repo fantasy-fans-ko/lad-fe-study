@@ -47,6 +47,7 @@ function App() {
 
   const fetchPlayer = () => {
     // fetch("http://localhost:8080/api/player/all")
+    // http://221.165.6.252:8080/api/player/crawling
     fetch("http://221.165.6.252:8080/api/player/all")    
       .then(function (result) {
         return result.json();
